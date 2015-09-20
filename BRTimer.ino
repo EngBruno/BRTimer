@@ -21,15 +21,22 @@ void callback(){
 
 void loop(){
   // Seu código vai aqui...
-  if(seg ==60){
-    Serial.println(seg);
-    minute++;
-    Serial.println(minute);
-  }else{
-    if(minute==60){
-      Serial.println(minute);
-      hour++;
-      Serial.println(hour);
-     }  
+  if(seg>=60) {
+  seg = 0;
+  minute++;
   }
+  if(minute>=60) {
+  minute = 0;
+  hour++;
+  }
+  if(hour>=24) {
+  hour=0;
+  minute=0;
+  }
+  Serial.print(hour);
+  Serial.print(":");
+  Serial.print(minute);
+  Serial.print(":");
+  Serial.println(seg);
+  delay(1000);
 }
